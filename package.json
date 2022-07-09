@@ -6,9 +6,13 @@
     "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "ss:update": "playwright test --update-snapshots"
+    "ss:local": "playwright test",
+    "ss:local:update": "playwright test --update-snapshots",
+    "ss:update": "yarn build && concurrently \"serve -s dist\" \"playwright test --update-snapshots\" -k",
+    "ss": "yarn build && concurrently \"serve -s dist\" \"playwright test\" -k"
   },
   "dependencies": {
+    "concurrently": "^7.2.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
